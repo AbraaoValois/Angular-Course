@@ -1,34 +1,34 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 16px #ccc;
     padding: 20px 30px;
     text-align: center;
     width: 90%;
     max-width: 600px;
 }
 
-h1{
+h1 {
     font-size: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #4b4949;
 }
 
-.add-item-form{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     gap: 10px;
-     margin-bottom: 20px;
+.add-item-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-input{
+input {
     flex: 1;
     padding: 10px;
     border: 2px solid #007bff;
@@ -36,55 +36,53 @@ input{
     font-size: 16px;
 }
 
-input:focus{
+input:focus {
     outline: none;
     border-color: #0056b3;
 }
 
-button [type="submit"]{
+button[type="submit"]{
     padding: 10px 20px;
     border: none;
     border-radius: 6px;
-    background-color: #007bff;
+    background: #007bff;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: backgroud 0.3s;
 }
 
-button[type="button"]:hover{
-    background-color: #0056b3;
+button[type="submit"]:hover{
+    background: #0056b3;
 }
 
 button[type="button"]{
-   padding: 10px 20px;
+    padding: 10px 20px;
     border: none;
     border-radius: 6px;
-    background-color: #d51f1f;
+    background: #d51f1f;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: backgroud 0.3s;
 }
 
-table{
+table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-
 }
 
 thead{
-    
+    background:  #007bff;
     color: #fff;
-
 }
 
 th{
-    background-color: #007bff;
+    background:  #007bff;
 }
 
-th, td{
+th, td {
     padding: 12px;
     text-align: center;
     border: 1px solid #ddd;
@@ -103,8 +101,6 @@ input[type="checkbox"]{
     cursor: pointer;
 }
 
-
-.item-riscado{
+.item-riscado {
     text-decoration: line-through;
-    color: gray;
 }
