@@ -1,32 +1,57 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cadastro/cliente';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
-  static REPO_CLIENTES = 'clientes';
+  static REPO_CLIENTES = "_CLIENTES";
 
-  constructor() {  }
+  constructor() { }
 
-  salvar (cliente: Cliente){
+  salvar(cliente: Cliente) {
     const storage = this.obterStorage();
-
     storage.push(cliente);
     localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
   }
 
-  obterStorage() : Cliente [] {
-    const repositorioClientes = localStorage.getItem(ClienteService.REPO_CLIENTES);
+  atualizar(cliente: Cliente) {
+    const storage = this.obterStorage();
+    const index = storage.findIndex(c => c.id === cliente.id);
+    if (index > -1) {
+      storage[index] = cliente;
+      localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
+    }
+  }
 
-    if(repositorioClientes){
-      const clientes : Cliente[] = JSON.parse(repositorioClientes);
+  deletar(cliente: Cliente) {
+    const storage = this.obterStorage();
+    const novaLista = storage.filter(c => c.id !== cliente.id);
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(novaLista));
+  }
+
+  pesquisarClientes(nomeBusca: string): Cliente[] {
+    const clientes = this.obterStorage();
+    if (!nomeBusca) {
       return clientes;
     }
-    const clientes : Cliente[] = []
-    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(clientes));
-    return clientes;
+    return clientes.filter(cliente =>
+      cliente.nome?.toLowerCase().includes(nomeBusca.toLowerCase())
+    );
+  }
+
+  buscarClientePorId(id: string): Cliente | undefined {
+    const clientes = this.obterStorage();
+    return clientes.find(cliente => cliente.id === id);
+  }
+
+  private obterStorage(): Cliente[] {
+    const repositorioClientes = localStorage.getItem(ClienteService.REPO_CLIENTES);
+    if (repositorioClientes) {
+      return JSON.parse(repositorioClientes);
+    }
+    localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify([]));
+    return [];
   }
 }
