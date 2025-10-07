@@ -6,6 +6,9 @@ export class Cliente {
   cpf: string;
   dataNascimento: string;
   email: string;
+  uf?: string;
+  municipio?: string;
+
 
   constructor(
     nome: string = '',
